@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { ArrowDown } from "lucide-react";
+import { Link } from "react-router-dom";
 import heroPet from "@/assets/hero-pet.jpg";
 
 export const Hero = () => {
@@ -37,14 +38,15 @@ export const Hero = () => {
             >
               Create Pet Profile
             </Button>
-            <Button 
-              size="lg" 
-              variant="secondary"
-              onClick={scrollToForm}
-              className="text-base px-8"
-            >
-              Learn More
-            </Button>
+            <Link to="/learn-more">
+              <Button 
+                size="lg" 
+                variant="secondary"
+                className="text-base px-8"
+              >
+                Learn More
+              </Button>
+            </Link>
           </div>
         </div>
         
