@@ -298,5 +298,30 @@ supabase.auth.onAuthStateChange((event, session) => {
     updateUI();
 });
 
+// Pet slider background animation
+const petImages = [
+    'https://images.unsplash.com/photo-1633722715463-d30628cda119?w=1200&h=600&fit=crop',
+    'https://images.unsplash.com/photo-1587300411515-fbe9f7932b0f?w=1200&h=600&fit=crop',
+    'https://images.unsplash.com/photo-1611003228941-98852ba62227?w=1200&h=600&fit=crop',
+    'https://images.unsplash.com/photo-1601758228658-3bda5a36b93f?w=1200&h=600&fit=crop',
+    'https://images.unsplash.com/photo-1552053831-71594a27c62d?w=1200&h=600&fit=crop',
+];
+
+let currentImageIndex = 0;
+const petSlider = document.getElementById('petSlider');
+
+function changePetImage() {
+    if (petSlider) {
+        petSlider.style.backgroundImage = `url('${petImages[currentImageIndex]}')`;
+        currentImageIndex = (currentImageIndex + 1) % petImages.length;
+    }
+}
+
+// Change pet image every 8 seconds
+if (petSlider) {
+    changePetImage();
+    setInterval(changePetImage, 8000);
+}
+
 // Initialize
 checkAuthStatus();
