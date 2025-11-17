@@ -1,8 +1,8 @@
-# PetFinder - Pet Safety with QR Codes 🐾
+# PetFinder - Pet Safety with QR Codes
 
 A web application for pet owners to register their pets and generate QR codes for quick identification and recovery if lost.
 
-**Sprint 1**: ✅ Complete - Authentication, Pet CRUD, QR Code Generation
+**Sprint 1**: Complete - Authentication, Pet CRUD, QR Code Generation
 
 ## Quick Start
 

@@ -1,8 +1,8 @@
-# Sprint 1 - Complete ✅
+# Sprint 1 - Complete
 
 ## What's Been Built
 
-### 1. **Authentication System** ✅
+### 1. **Authentication System**
 - **Signup Page** (`/src/pages/Signup.tsx`)
   - Email & password registration
   - Password confirmation validation
@@ -19,7 +19,7 @@
   - Real-time auth state subscription
   - useAuth hook for components
 
-### 2. **Pet Management** ✅
+### 2. **Pet Management**
 - **Dashboard** (`/src/pages/Dashboard.tsx`)
   - Add new pets form
   - List user's pets
@@ -32,7 +32,7 @@
   - Database integration
   - Owner-based pet filtering
 
-### 3. **QR Code Generation** ✅
+### 3. **QR Code Generation**
 - **QR Service** (`/src/lib/qrService.ts`)
   - Generate QR codes from pet IDs
   - Upload to Supabase Storage
@@ -43,7 +43,7 @@
   - Display QR codes in pet list
   - Download as PNG files
 
-### 4. **Security & Infrastructure** ✅
+### 4. **Security & Infrastructure**
 - **Protected Routes** (`/src/components/ProtectedRoute.tsx`)
   - Dashboard only accessible to authenticated users
   - Automatic redirect to login
@@ -185,7 +185,7 @@ updated_at        TIMESTAMP
 - Authenticated users only
 - Storage bucket for QR codes is public-read, auth-write
 
-## Sprint 1 Deliverables ✅
+## Sprint 1 Deliverables
 
 - [x] Website running locally
 - [x] Supabase connected and configured
@@ -240,6 +240,6 @@ kill -9 <PID>
 
 ---
 
-**Sprint 1 Status**: ✅ COMPLETE  
+**Sprint 1 Status**: COMPLETE  
 **Deployed**: Ready for local testing  
 **Next Review**: Sprint 2 Planning

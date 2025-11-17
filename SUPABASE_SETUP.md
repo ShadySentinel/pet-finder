@@ -52,7 +52,7 @@ In the Index page, you can add a link to login:
 <Link to="/login" className="btn">Get Started</Link>
 ```
 
-## You're Done! 🎉
+## You're Done!
 
 Now you can:
 - Run `npm run dev` to start the development server
