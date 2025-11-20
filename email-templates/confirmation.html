@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="x-apple-disable-message-reformatting">
+    <meta name="format-detection" content="telephone=no,address=no,email=no,date=no,url=no">
+    <title>Confirm your Pet‑Finder signup</title>
+    <!--[if mso]>
+      <xml>
+        <o:OfficeDocumentSettings>
+          <o:AllowPNG/>
+          <o:PixelsPerInch>96</o:PixelsPerInch>
+        </o:OfficeDocumentSettings>
+      </xml>
+    <![endif]-->
+    <style>
+      /* Base reset */
+      html, body { margin:0 !important; padding:0 !important; height:100% !important; width:100% !important; }
+      * { -ms-text-size-adjust:100%; -webkit-text-size-adjust:100%; }
+      table, td { mso-table-lspace:0pt !important; mso-table-rspace:0pt !important; }
+      table { border-spacing:0 !important; border-collapse:collapse !important; table-layout:fixed !important; margin:0 auto !important; }
+      img { -ms-interpolation-mode:bicubic; }
+      a { text-decoration:none; }
+      /* Dark mode defaults */
+      @media (prefers-color-scheme: dark) {
+        body, .bg-body { background: #0b0f14 !important; }
+        .card { background:#0f1720 !important; border-color:#1f2937 !important; }
+        .text { color:#e5eef9 !important; }
+        .muted { color:#9fb1c3 !important; }
+      }
+    </style>
+  </head>
+  <body class="bg-body" style="margin:0; padding:0; background:#f3f4f6;">
+    <center role="article" aria-roledescription="email" lang="en" style="width:100%; background:#f3f4f6;">
+      <table role="presentation" width="100%" style="background:#f3f4f6;" cellpadding="0" cellspacing="0">
+        <tr>
+          <td align="center">
+            <table role="presentation" width="100%" style="max-width:600px;" cellpadding="0" cellspacing="0">
+              <!-- Spacer -->
+              <tr><td height="32" aria-hidden="true">&nbsp;</td></tr>
+
+              <!-- Brand header -->
+              <tr>
+                <td align="left" style="padding:0 24px;">
+                  <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+                    <tr>
+                      <td align="left" style="font:700 18px/1.2 -apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif; color:#111827;">
+                        Pet‑Finder
+                      </td>
+                      <td align="right" style="font:500 12px/1 -apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif; color:#6b7280;">Account confirmation</td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+
+              <!-- Card -->
+              <tr>
+                <td style="padding:16px 24px 24px;">
+                  <table role="presentation" width="100%" class="card" cellpadding="0" cellspacing="0" style="background:#ffffff; border:1px solid #e5e7eb; border-radius:12px; overflow:hidden;">
+                    <tr>
+                      <td style="padding:28px 24px 20px;">
+                        <h1 class="text" style="margin:0 0 8px 0; font:700 22px/1.25 -apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif; color:#111827;">Confirm your signup</h1>
+                        <p class="text" style="margin:0; font:400 15px/1.6 -apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif; color:#374151;">You're almost there! You created a Pet‑Finder account with this email address. Please confirm your email to finish setting up your account.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td align="center" style="padding:8px 24px 24px;">
+                        <!-- Button -->
+                        <table role="presentation" cellpadding="0" cellspacing="0">
+                          <tr>
+                            <td bgcolor="#f97316" style="border-radius:10px;">
+                              <a href="{{ .ConfirmationURL }}" target="_blank" style="display:inline-block; padding:14px 22px; font:600 15px/1 -apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif; color:#ffffff; background:#f97316; border:1px solid #ea580c; border-radius:10px;">Confirm your email</a>
+                            </td>
+                          </tr>
+                        </table>
+                        <p class="muted" style="margin:14px 0 0; font:400 12px/1.6 -apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif; color:#6b7280;">This button will take you back to Pet‑Finder to verify your address.</p>
+                      </td>
+                    </tr>
+
+                    <!-- Fallback link -->
+                    <tr>
+                      <td style="padding:0 24px 24px;">
+                        <p class="muted" style="margin:0 0 6px; font:500 12px/1.6 -apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif; color:#6b7280;">Button not working?</p>
+                        <p class="muted" style="margin:0; word-break:break-all; font:400 12px/1.6 -apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif; color:#6b7280;">
+                          Copy and paste this link into your browser:<br>
+                          <a href="{{ .ConfirmationURL }}" style="color:#f97316;">{{ .ConfirmationURL }}</a>
+                        </p>
+                      </td>
+                    </tr>
+
+                    <!-- Footnote -->
+                    <tr>
+                      <td style="padding:0 24px 24px;">
+                        <p class="muted" style="margin:0; font:400 12px/1.6 -apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif; color:#6b7280;">
+                          You’re receiving this email because you signed up for Pet‑Finder.
+                          If you didn’t request this, you can safely ignore this message.
+                        </p>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+
+              <!-- Footer -->
+              <tr>
+                <td align="center" style="padding:0 24px 32px;">
+                  <p class="muted" style="margin:0; font:400 12px/1.6 -apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif; color:#6b7280;">© {{ .SiteURL | default "Pet‑Finder" }}</p>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </center>
+  </body>
+</html>

@@ -22,10 +22,9 @@ function initPetSlider() {
     updateBackground();
     setInterval(updateBackground, 5000);
 }
-
 // Supabase Client
-const SUPABASE_URL = 'https://zfwhbdejvtlvltumkrrb.supabase.co';
-const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inpmd2hiZGVqdnRsdmx0dW1rcnJiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzE3NTI4OTgsImV4cCI6MjA0NzMyODg5OH0.pJlnM1pN0zRnR5PsKsQ9J7n2-v0K8V2d8B0qR3zY7Ls';
+const SUPABASE_URL = 'https://idvunxqfgengfnbrsqla.supabase.co';
+const SUPABASE_ANON_KEY = 'sb_publishable_QOik2xXg32RTTgRasLNLcA_GLMaw54Y';
 
 const { createClient } = window.supabase;
 const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
@@ -128,15 +127,37 @@ signupForm.addEventListener('submit', async (e) => {
     try {
         const { data, error } = await supabase.auth.signUp({
             email,
-            password
+            password,
+            options: {
+                emailRedirectTo: 'http://localhost:3000'
+            }
         });
         
-        if (error) throw error;
+        if (error) {
+            console.error('Signup error:', error);
+            if (error.message.includes('User already registered')) {
+                alert('This email is already registered. Please try logging in instead.');
+            } else {
+                throw error;
+            }
+            return;
+        }
         
-        alert('Account created! Please check your email to verify.');
+        console.log('Signup data:', data);
+        
+        // Check if user needs email confirmation
+        if (data.user && !data.user.email_confirmed_at) {
+            alert(`Account created! Please check your email (${email}) for a confirmation link. Check your spam folder if you don't see it.`);
+        } else if (data.user && data.user.email_confirmed_at) {
+            alert('Account created and confirmed! You can now log in.');
+        } else {
+            alert('Account created! You may need to confirm your email before logging in.');
+        }
+        
         signupModal.classList.remove('active');
         signupForm.reset();
     } catch (error) {
+        console.error('Signup exception:', error);
         alert('Signup failed: ' + error.message);
     }
 });
@@ -324,8 +345,41 @@ supabase.auth.onAuthStateChange((event, session) => {
 });
 
 
+// Handle email confirmation redirect
+async function handleEmailConfirmation() {
+    const hash = window.location.hash;
+    if (hash.includes('access_token')) {
+        // Extract token from URL
+        const params = new URLSearchParams(hash.substring(1));
+        const accessToken = params.get('access_token');
+        const refreshToken = params.get('refresh_token');
+        
+        if (accessToken) {
+            try {
+                // Set the session with the tokens
+                const { data, error } = await supabase.auth.setSession({
+                    access_token: accessToken,
+                    refresh_token: refreshToken
+                });
+                
+                if (error) {
+                    console.error('Session error:', error);
+                } else {
+                    console.log('Email confirmed and logged in!');
+                    currentUser = data.user;
+                    updateUI();
+                    window.location.hash = '';
+                }
+            } catch (error) {
+                console.error('Confirmation error:', error);
+            }
+        }
+    }
+}
+
 // Initialize when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
+    handleEmailConfirmation();
     checkAuthStatus();
     initPetSlider();
 });
