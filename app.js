@@ -150,45 +150,43 @@ signupForm.addEventListener('submit', async (e) => {
         
         console.log('Signup data:', data);
         
-        // Supabase sometimes returns existing users without errors
-        // Check if user already exists by looking at the response
-        if (data.user && !data.session) {
-            // User exists but no session was created = existing unconfirmed user
-            alert(`This email (${email}) is already registered but not confirmed. Please check your email for a confirmation link, or try logging in.`);
-            return;
-        }
-        
-        if (data.user && data.session) {
-            // New user with immediate session = account created and confirmed
-            alert('Account created and confirmed! Welcome to Pet-Finder.');
-            currentUser = data.user;
-            updateUI();
-            signupModal.classList.remove('active');
-            signupForm.reset();
-            showDashboard();
-            return;
-        }
-        
-        if (data.user && data.user.created_at) {
-            const createdAt = new Date(data.user.created_at);
-            const now = new Date();
-            const timeDiff = now.getTime() - createdAt.getTime();
-            
-            // If user was created more than 30 seconds ago, it's likely existing
-            if (timeDiff > 30000) {
-                alert(`This email (${email}) is already registered. Please try logging in instead.`);
-                return;
-            }
-            
-            // New user created, needs email confirmation
-            if (!data.user.email_confirmed_at) {
-                alert(`Account created successfully! Please check your email (${email}) for a confirmation link. Check your spam folder if you don't see it.`);
+        // For new signups, Supabase typically returns a user object
+        if (data.user) {
+            // Check if user was just created (within last 5 seconds) vs existing
+            if (data.user.created_at) {
+                const createdAt = new Date(data.user.created_at);
+                const now = new Date();
+                const timeDiff = Math.abs(now.getTime() - createdAt.getTime());
+                
+                // If user was created very recently (< 5 seconds), it's a new signup
+                if (timeDiff < 5000) {
+                    // Definitely a new user
+                    if (data.session) {
+                        // Account created and auto-confirmed
+                        alert('Account created and confirmed! Welcome to Pet-Finder.');
+                        currentUser = data.user;
+                        updateUI();
+                        signupModal.classList.remove('active');
+                        signupForm.reset();
+                        showDashboard();
+                        return;
+                    } else {
+                        // New account, needs email confirmation
+                        alert(`Account created successfully! Please check your email (${email}) for a confirmation link. Check your spam folder if you don't see it.`);
+                    }
+                } else {
+                    // User was created more than 5 seconds ago = existing user
+                    alert(`This email (${email}) is already registered but not confirmed. Please check your email for a confirmation link, or try logging in.`);
+                    return;
+                }
             } else {
-                alert('Account created and confirmed! You can now log in.');
+                // No created_at timestamp, assume new user
+                alert(`Account created! Please check your email (${email}) for a confirmation link.`);
             }
         } else {
-            // Fallback
-            alert('Account created! Please check your email to confirm your account.');
+            // No user object returned - something went wrong
+            alert('Something went wrong during signup. Please try again.');
+            return;
         }
         
         signupModal.classList.remove('active');

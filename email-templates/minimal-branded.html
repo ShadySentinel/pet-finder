@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<body style="font-family: Arial, sans-serif; padding: 20px; background-color: #f5f5f5;">
+  <div style="max-width: 500px; margin: 0 auto; background: white; padding: 40px; border-radius: 8px;">
+    
+    <div style="text-align: center; margin-bottom: 30px;">
+      <h1 style="color: #ff8c00; margin: 0; font-size: 28px;">🐾 Pet-Finder</h1>
+    </div>
+    
+    <h2 style="color: #333; margin-bottom: 20px;">Welcome! Confirm your email</h2>
+    
+    <p style="color: #666; line-height: 1.5; margin-bottom: 30px;">
+      Thanks for joining Pet-Finder! Click the button below to verify your email and start protecting your pets.
+    </p>
+    
+    <div style="text-align: center; margin: 30px 0;">
+      <a href="{{.ConfirmationURL}}" 
+         style="background: #ff8c00; color: white; padding: 15px 25px; text-decoration: none; border-radius: 5px; font-weight: bold; display: inline-block;">
+         Verify My Email
+      </a>
+    </div>
+    
+    <hr style="border: none; border-top: 1px solid #eee; margin: 30px 0;">
+    
+    <p style="color: #999; font-size: 12px;">
+      Link not working? Copy: {{ .ConfirmationURL }}
+    </p>
+    
+    <p style="color: #999; font-size: 12px;">
+      Pet-Finder - Keeping pets safe with QR codes 
+    </p>
+    
+  </div>
+</body>
+</html>
